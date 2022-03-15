@@ -253,12 +253,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Errore'
-        '404':
-          description: NOT_FOUND
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Errore'
         '500':
           description: INTERNAL_SERVER_ERROR
           content:
@@ -291,6 +285,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+              example:
+                stato: 'IN_ELABORAZIONE'
+                messaggio: 'Richiesta elenco in elaborazione'
         '303':
           description: JSON di risposta attraverso il quale l'Erogatore indica, sulla base dello stato del processamento, che l'elenco è pronto all'URL indicato nell'<i>HTTP header Location</i>.
           headers:
@@ -304,6 +301,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+              example:
+                stato: 'DISPONIBILE'
+                messaggio: 'Richiesta elenco disponibile'
         '400':
           description: BAD_REQUEST
           content:
