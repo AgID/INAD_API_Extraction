@@ -31,7 +31,7 @@ tags:
 
 paths:
   
-  /{cf}:
+  /{codice_fiscale}:
     get:
       tags:
         - API ESTRAZIONI PUNTUALI
@@ -41,12 +41,12 @@ paths:
       operationId: recuperoDomicilioDigitale
       
       parameters:
-        - name: cf
+        - name: codice_fiscale
           in: path
-          description: CF/PIVA del Domicilio per il quale si effettua la ricerca
+          description: Codice fiscale per il quale si effettua la ricerca
           required: true
           schema:
-            $ref: '#/components/schemas/RichiestaDomicilioDigitale'         
+            $ref: '#/components/schemas/Request_Digital_Address'         
       
       security:
         - bearerAuth: []
@@ -57,7 +57,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaRicercaDomicilioDigitale'
+                $ref: '#/components/schemas/Response_Request_Digital_Address'
           headers:
             Agid-JWS-Signature:
               $ref: '#/components/headers/Agid-JWS-Signature'
@@ -75,7 +75,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
         
-  /verifica/{cf}:
+  /verify/{codice_fiscale}:
     get:
       tags:
         - API ESTRAZIONI PUNTUALI
@@ -85,21 +85,21 @@ paths:
       operationId: verificaDomicilioDigitale
       
       parameters:
-        - name: cf
+        - name: codice_fiscale
           in: path
-          description: CF/PIVA del Domicilio per il quale si effettua la ricerca
+          description: codice fiscale per il quale si effettua la ricerca
           required: true
           schema:
             $ref: '#/components/schemas/CodiceFiscale'
           example: RRANGL74M28R701V
-        - name: domicilioDigitale
+        - name: digital_address
           in: query
           description: Indirizzo PEC del Domicilio da ricercare
           required: true
           schema:
-            $ref: '#/components/schemas/DomicilioDigitale'
+            $ref: '#/components/schemas/Digital_Address'
           example: example@pec.it
-        - name: data
+        - name: since
           in: query
           description: Data in formato ISO 8601 <i>yyyy-MM-dd</i>
           required: true
@@ -117,7 +117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaVerificaDomicilioDigitale'
+                $ref: '#/components/schemas/Response_Verify_Digital_Address'
           headers:
               Agid-JWS-Signature:
                 $ref: '#/components/headers/Agid-JWS-Signature'
@@ -135,7 +135,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
 
-  /elenco:
+  /listDigitalAddress:
     post:
       tags:
         - API ESTRAZIONI MULTIPLE
@@ -148,7 +148,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RichiestaElencoDomiciliDigitali'
+              $ref: '#/components/schemas/Request_List_Digital_Address'
         required: true
       
       security:
@@ -163,7 +163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaRichiestaElencoDomiciliDigitali'
+                $ref: '#/components/schemas/Response_Request_List_Digital_Address'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -177,7 +177,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
           
-  /elenco/{id}:
+  /listDigitalAddress/{id}:
     get:
       tags:
         - API ESTRAZIONI MULTIPLE
@@ -200,7 +200,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+                $ref: '#/components/schemas/Response_Status_List_Digital_Address'
               example:
                 stato: 'IN_ELABORAZIONE'
                 messaggio: 'Richiesta elenco in elaborazione'
@@ -212,7 +212,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+                $ref: '#/components/schemas/Response_Status_List_Digital_Address'
               example:
                 stato: 'DISPONIBILE'
                 messaggio: 'Richiesta elenco disponibile'
@@ -229,7 +229,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
 
-  /elenco/risposta/{id}:
+  /listDigitalAddress/response/{id}:
     get:
       tags:
         - API ESTRAZIONI MULTIPLE
@@ -255,7 +255,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RispostaElencoDomiciliDigitali'
+                $ref: '#/components/schemas/Response_List_Digital_Address'
           headers:
             Agid-JWS-Signature:
               $ref: '#/components/headers/Agid-JWS-Signature'
@@ -339,40 +339,40 @@ components:
       description: Codice Fiscale/Partita IVA relativa al Domicilio Digitale
       example: RRANGL74M28R701V
 
-    RichiestaDomicilioDigitale:
+    Request_Digital_Address:
       required:
         - codiciFiscali
-        - riferimentoPratica
+        - practicalReference
       type: object
       properties:
         codiciFiscali:
             $ref: '#/components/schemas/CodiceFiscale'
-        riferimentoPratica:
+        practicalReference:
           type: string
           description: Riferimento del procedimento amministrativo per il quale si richiede l'elenco
           example: <NUM_PROTOCOLLO|NUM_FASCICOLO|NUM_VERBALE>
       description: Modello di richiesta per Domicilio Digitale
     
-    DomicilioDigitale:
+    Digital_Address:
       pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$
       type: string
       description: Indirizzo PEC del Domicilio Digitale
       example: example@pec.it
     
-    ElementoDomicilioDigitale:
+    Element_Digital_Address:
       required:
-        - domicilioDigitale
-        - infoUtilizzo
+        - digitalAddress
+        - usageInfo
       type: object
       properties:
-        domicilioDigitale:
-          $ref: '#/components/schemas/DomicilioDigitale'
-        professioneEsercitata:
+        digitalAddress:
+          $ref: '#/components/schemas/Digital_Address'        
+        practicedProfession:
           type: string
           description: Professione esercitata. Non presente per Persona Fisica/Ente
           example: Avvocato
-        infoUtilizzo:
-          $ref: '#/components/schemas/InfoUtilizzo'
+        usageInfo:
+          $ref: '#/components/schemas/Usage_Info'
       description: Modello di risposta per singolo Domicilio Digitale
     
     Errore:
@@ -409,22 +409,22 @@ components:
           example: <detail_error>
       description: Modello di risposta in caso di errore
     
-    InfoUtilizzo:
+    Usage_Info:
       required:
-        - dataFineValidita
-        - motivazione
+        - dateEndValidity
+        - motivation
       type: object
       properties:
         motivazione:
-          $ref: '#/components/schemas/MotivazioneCessazione'
-        dataFineValidita:
+          $ref: '#/components/schemas/Motivation_Termination'
+        dateEndValidity:
           type: string
           description: Data/Ora fine validità in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
           format: date-time
           example: '2017-07-21T17:32:28Z'
       description: Modello di risposta Info Utilizzo per singolo Domicilio Digitale
     
-    MotivazioneCessazione:
+    Motivation_Termination:
       type: string
       description: Motivazione cessazione del Domicilio Digitale
       example: CESSAZIONE_VOLONTARIA
@@ -432,109 +432,109 @@ components:
         - CESSAZIONE_UFFICIO
         - CESSAZIONE_VOLONTARIA
     
-    RichiestaElencoDomiciliDigitali:
+    Request_List_Digital_Address:
       required:
         - codiciFiscali
-        - riferimentoPratica
+        - practicalReference
       type: object
       properties:
         codiciFiscali:
           type: array
           items:
             $ref: '#/components/schemas/CodiceFiscale'
-        riferimentoPratica:
+        practicalReference:
           type: string
           description: Riferimento del procedimento amministrativo per il quale si richiede l'elenco
           example: <NUM_PROTOCOLLO|NUM_FASCICOLO|NUM_VERBALE>
       description: Modello di richiesta per Elenco Domicili Digitali
     
-    RispostaElencoDomiciliDigitali:
+    Response_List_Digital_Address:
       required:
-        - elenco
+        - list
       type: object
       properties:
-        elenco:
+        list:
           type: array
           description: Elenco Domicili Digitali estratti
           items:
-            $ref: '#/components/schemas/RispostaRicercaDomicilioDigitale'
+            $ref: '#/components/schemas/Digital_Address'
       description: Modello di risposta per Elenco Domicili Digitali
     
-    RispostaRicercaDomicilioDigitale:
+    Response_Request_Digital_Address:
       required:
-        - cf
-        - dataEstrazione        
+        - codice_fiscale
+        - since        
       type: object
       properties:
-        cf:
+        codice_fiscale:
           $ref: '#/components/schemas/CodiceFiscale'
-        dataEstrazione:
+        since:
           type: string
           description: Data/Ora estrazione in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
           format: date-time
           example: '2017-07-21T17:32:28Z'
-        domiciliDigitali:
+        digitalAddress:
           type: array
           description: Elenco Domicili Digitali afferenti al Codice Fiscale di Input
           items:
-            $ref: '#/components/schemas/ElementoDomicilioDigitale'
+            $ref: '#/components/schemas/Element_Digital_Address'
       description: Modello di risposta per Ricerca Domicilio Digitale
     
-    RispostaRichiestaElencoDomiciliDigitali:
+    Response_Request_List_Digital_Address:
       required:
-        - dataOraRichiesta
+        - dateTimeRequest
         - id
-        - messaggio
-        - stato
+        - message
+        - state
       type: object
       properties:
-        stato:
-          $ref: '#/components/schemas/StatoElaborazioneRichiesta'
-        messaggio:
+        state:
+          $ref: '#/components/schemas/Status_Processing_Request'
+        message:
           type: string
           description: Messaggio di conferma dell'avvenuta presa in carico della richiesta
           example: Richiesta elenco presa in carico
         id:
           $ref: '#/components/schemas/UUID'
-        dataOraRichiesta:
+        dateTimeRequest:
           type: string
           description: Data/Ora di inserimento della richiesta in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
           format: date-time
           example: '2017-07-21T17:32:28Z'
       description: Modello di risposta per Richiesta Elenco Domicili Digitali
     
-    RispostaStatoRichiestaElencoDomiciliDigitali:
+    Response_Status_List_Digital_Address:
       required:
-        - messaggio
-        - stato
+        - message
+        - state
       type: object
       properties:
-        stato:
-          $ref: '#/components/schemas/StatoElaborazioneRichiesta'
-        messaggio:
+        state:
+          $ref: '#/components/schemas/Status_Processing_Request'
+        message:
           type: string
           description: Messaggio descrittivo dello stato della richiesta
           example: Richiesta elenco in fase di processamento
       description: Modello di risposta per Stato Richiesta Elenco Domicili Digitali
     
-    RispostaVerificaDomicilioDigitale:
+    Response_Verify_Digital_Address:
       required:
-        - dataOraVerifica
-        - esito
+        - dateTimeCheck
+        - outcome
       type: object
       properties:
-        esito:
+        outcome:
           type: boolean
           description: Esito della verifica
           example: true
-        dataOraVerifica:
+        dateTimeCheck:
           type: string
           description: Data/Ora estrazione in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
           format: date-time
           example: '2017-07-21T17:32:28Z'
       description: Modello di risposta per Verifica Domicilio Digitale
     
-    StatoElaborazioneRichiesta:
+    Status_Processing_Request:
       type: string
       description: Stato della richiesta di elaborazione Report
       example: PRESA_IN_CARICO
