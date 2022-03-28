@@ -159,11 +159,7 @@ paths:
           description: JSON di risposta attraverso il quale l'Erogatore fornisce, insieme all'acknowledgement della richiesta, l'URL per interrogare lo stato di processamento utilizzando l'<i>HTTP header Location</i>. L'elenco è individuato da un codice identificativo univoco.
           headers:
             Location:
-              description: URL dove verificare lo stato
-              style: simple
-              schema:
-                type: string
-                format: uri
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -212,11 +208,7 @@ paths:
           description: JSON di risposta attraverso il quale l'Erogatore indica, sulla base dello stato del processamento, che l'elenco è pronto all'URL indicato nell'<i>HTTP header Location</i>.
           headers:
             Location:
-              description: URL da dove è possibile scaricare il Report elaborato
-              style: simple
-              schema:
-                type: string
-                format: uri
+              $ref: '#/components/headers/Location'              
           content:
             application/json:
               schema:
@@ -294,6 +286,13 @@ components:
         format: JWS
         maxLength: 4096
         example: eyJzd.fafa.fafafa
+
+    Location:
+      description: URL dove verificare lo stato
+      
+      schema:
+        type: string
+        format: uri
 
   responses:
     '400':
