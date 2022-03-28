@@ -22,7 +22,17 @@ amministrazione, e nello specifico delle:
   adottate dal AgID ai sensi dell’articolo 73, comma 3-ter, lettera b) 
   del Decreto legislativo 7 marzo 2005, n. 82;
 
-- **Linee Guida Tecnologie e standard per la sicurezza dell’interoperabilità 
-  tramite API dei sistemi informatici**, adottate dal AgID ai sensi 
-  dell’articolo 73, comma 3-ter, lettera b) e dell’articolo 51 del 
-  Decreto legislativo 7 marzo 2005, n. 82.
+- **Linee Guida Tecnologie e standard per la sicurezza dell’interoperabilità tramite API dei sistemi informatici**, 
+  adottate dal AgID ai sensi dell’articolo 73, comma 3-ter, lettera b) 
+  e dell’articolo 51 del Decreto legislativo 7 marzo 2005, n. 82.
+
+La costruzione del trust tra INAD e i sistemi ICT delle PA è realizzato 
+per il tramite della infrastruttura tecnologica della Piattaforma Digitale
+Nazionale Dati per l’interoperabilità ai sensi delle:
+
+- **Linee Guida sull’infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l’interoperabilità dei sistemi informativi e delle basi di dati**, 
+  adottate dal AgID ai sensi dell’articolo 50-ter, comma 2 del Decreto 
+  legislativo 7 marzo 2005, n. 82.
+
+
+
