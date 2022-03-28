@@ -173,9 +173,17 @@ paths:
         '401':
           $ref: '#/components/responses/401'
         '403':
+<<<<<<< HEAD
           $ref: '#/components/responses/403'
         '404':
           $ref: '#/components/responses/404'
+=======
+          description: FORBIDDEN
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errore'
+>>>>>>> a3387a2ff4d51ccc4955e25f355b9e856eeb947a
         '500':
           $ref: '#/components/responses/500'
         '503':
@@ -205,6 +213,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+              example:
+                stato: 'IN_ELABORAZIONE'
+                messaggio: 'Richiesta elenco in elaborazione'
         '303':
           description: JSON di risposta attraverso il quale l'Erogatore indica, sulla base dello stato del processamento, che l'elenco è pronto all'URL indicato nell'<i>HTTP header Location</i>.
           headers:
@@ -218,6 +229,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RispostaStatoRichiestaElencoDomiciliDigitali'
+              example:
+                stato: 'DISPONIBILE'
+                messaggio: 'Richiesta elenco disponibile'
         '400':
           $ref: '#/components/responses/400'
         '401':
