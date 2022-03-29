@@ -31,7 +31,7 @@ tags:
 
 paths:
   
-  /{codice_fiscale}:
+  /extract/{codice_fiscale}:
     get:
       tags:
         - API ESTRAZIONI PUNTUALI
@@ -177,7 +177,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
           
-  /listDigitalAddress/{id}:
+  /listDigitalAddress/state/{id}:
     get:
       tags:
         - API ESTRAZIONI MULTIPLE
