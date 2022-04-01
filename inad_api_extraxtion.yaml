@@ -9,7 +9,6 @@ info:
     - [ID_AUTH_CHANNEL_01] Direct Trust Transport-Level Security
     - [BLOCK_REST] Blocking REST
     - [NONBLOCK_PULL_REST] Not Blocking Pull REST
-    - [INTEGRITY_REST_01] Integrità del payload messaggio REST (solo per risposte INAD con indicazione di domicilio digitale)
 
   contact:
     name: AgID - Agenzia per l'Italia Digitale
@@ -58,10 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response_Request_Digital_Address'
-          headers:
-            Agid-JWS-Signature:
-              $ref: '#/components/headers/Agid-JWS-Signature'
-
+          
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -118,9 +114,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response_Verify_Digital_Address'
-          headers:
-              Agid-JWS-Signature:
-                $ref: '#/components/headers/Agid-JWS-Signature'
 
         '400':
           $ref: '#/components/responses/400'
@@ -256,9 +249,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response_List_Digital_Address'
-          headers:
-            Agid-JWS-Signature:
-              $ref: '#/components/headers/Agid-JWS-Signature'
               
         '400':
           $ref: '#/components/responses/400'
@@ -275,18 +265,6 @@ paths:
 
 components:
   headers:
-    Agid-JWS-Signature:
-      description: |-
-        L'header Agid-JWS-Signature è un JWS (JSON Web Signature) che contiene una firma digitale
-        associata al messaggio scambiato.
-        Vedi il pattern di sicurezza [INTEGRITY_REST_01] del MoDI
-
-      schema:
-        type: string
-        format: JWS
-        maxLength: 4096
-        example: eyJzd.fafa.fafafa
-
     Location:
       description: URL dove verificare lo stato
       
