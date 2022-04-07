@@ -45,10 +45,7 @@ paths:
           description: Codice fiscale per il quale si effettua la ricerca
           required: true
           schema:
-            $ref: '#/components/schemas/Request_Digital_Address'         
-      
-      security:
-        - bearerAuth: []
+            $ref: '#/components/schemas/Request_Digital_Address'
 
       responses:
         '200':
@@ -103,9 +100,6 @@ paths:
             type: string
             format: date
           example: '2017-07-21'
-      
-      security:
-        - bearerAuth: []
 
       responses:
         '200':
@@ -143,9 +137,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Request_List_Digital_Address'
         required: true
-      
-      security:
-        - bearerAuth: []
 
       responses:
         '202':
@@ -238,9 +229,6 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/UUID'
-      
-      security:
-        - bearerAuth: []
 
       responses:
         '200':
@@ -536,3 +524,5 @@ components:
       type: http
       description: |-
         Implementazione conforme ad RFC8725.
+security:
+  - bearerAuth: []
