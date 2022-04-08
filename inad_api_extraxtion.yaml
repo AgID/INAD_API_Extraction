@@ -54,6 +54,7 @@ paths:
           schema:
             $ref: '#/components/schemas/PracticalReference'
           example: abc123
+          
       responses:
         '200':
           description: JSON di risposta che restituisce il domicilio digitale estratto. Per domicilio digitale eletto in qualità di Professionista è estratta anche l'attività professionale esercitata.
@@ -107,6 +108,13 @@ paths:
             type: string
             format: date
           example: '2017-07-21'
+        - name: practicalReference
+          in: query
+          description: Riferimento del procedimento amministrativo per il quale si richiede l'estrazione
+          required: true
+          schema:
+            $ref: '#/components/schemas/PracticalReference'
+          example: abc123
 
       responses:
         '200':
