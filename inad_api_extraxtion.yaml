@@ -45,11 +45,16 @@ paths:
           description: Codice fiscale per il quale si effettua la ricerca
           required: true
           schema:
-            $ref: '#/components/schemas/Request_Digital_Address'         
-      
-      security:
-        - bearerAuth: []
-
+            $ref: '#/components/schemas/CodiceFiscale'
+          example: RRANGL74M28R701V
+        - name: practicalReference
+          in: query
+          description: Riferimento del procedimento amministrativo per il quale si richiede l'estrazione
+          required: true
+          schema:
+            $ref: '#/components/schemas/PracticalReference'
+          example: abc123
+          
       responses:
         '200':
           description: JSON di risposta che restituisce il domicilio digitale estratto. Per domicilio digitale eletto in qualità di Professionista è estratta anche l'attività professionale esercitata.
@@ -103,9 +108,13 @@ paths:
             type: string
             format: date
           example: '2017-07-21'
-      
-      security:
-        - bearerAuth: []
+        - name: practicalReference
+          in: query
+          description: Riferimento del procedimento amministrativo per il quale si richiede l'estrazione
+          required: true
+          schema:
+            $ref: '#/components/schemas/PracticalReference'
+          example: abc123
 
       responses:
         '200':
@@ -143,9 +152,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Request_List_Digital_Address'
         required: true
-      
-      security:
-        - bearerAuth: []
 
       responses:
         '202':
@@ -238,13 +244,10 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/UUID'
-      
-      security:
-        - bearerAuth: []
 
       responses:
         '200':
-          description: Risposta di tipo JSON che rappresenta l'elenco dei domicili digitali estratti.  I codici fiscali per i quali non è presente il domicilio digitale sono comunque indicati nella risposta con informazione non valorizzata. L'elenco è reso disponibile per un massimo di 48 ore, trascorse le quali l'elenco viene cancellato.
+          description: Risposta di tipo JSON che rappresenta l'elenco dei domicili digitali estratti. I codici fiscali per i quali non è presente il domicilio digitale sono comunque indicati nella risposta con informazione non valorizzata. L'elenco è reso disponibile per un massimo di 48 ore, trascorse le quali l'elenco viene cancellato.
           content:
             application/json:
               schema:
@@ -316,20 +319,11 @@ components:
       type: string
       description: Codice Fiscale/Partita IVA relativa al Domicilio Digitale
       example: RRANGL74M28R701V
-
-    Request_Digital_Address:
-      required:
-        - codiciFiscali
-        - practicalReference
-      type: object
-      properties:
-        codiciFiscali:
-            $ref: '#/components/schemas/CodiceFiscale'
-        practicalReference:
-          type: string
-          description: Riferimento del procedimento amministrativo per il quale si richiede l'elenco
-          example: <NUM_PROTOCOLLO|NUM_FASCICOLO|NUM_VERBALE>
-      description: Modello di richiesta per Domicilio Digitale
+      
+    PracticalReference:
+      type: string
+      description: Riferimento del procedimento amministrativo per il quale si richiede l'estrazione
+      example: abc123
     
     Digital_Address:
       pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$
@@ -421,9 +415,7 @@ components:
           items:
             $ref: '#/components/schemas/CodiceFiscale'
         practicalReference:
-          type: string
-          description: Riferimento del procedimento amministrativo per il quale si richiede l'elenco
-          example: <NUM_PROTOCOLLO|NUM_FASCICOLO|NUM_VERBALE>
+          $ref: '#/components/schemas/PracticalReference'
       description: Modello di richiesta per Elenco Domicili Digitali
     
     Response_List_Digital_Address:
@@ -435,12 +427,13 @@ components:
           type: array
           description: Elenco Domicili Digitali estratti
           items:
-            $ref: '#/components/schemas/Digital_Address'
+            $ref: '#/components/schemas/Response_Request_Digital_Address'
       description: Modello di risposta per Elenco Domicili Digitali
     
     Response_Request_Digital_Address:
       required:
         - codice_fiscale
+        - digitalAddress
         - since        
       type: object
       properties:
@@ -536,3 +529,5 @@ components:
       type: http
       description: |-
         Implementazione conforme ad RFC8725.
+security:
+  - bearerAuth: []
