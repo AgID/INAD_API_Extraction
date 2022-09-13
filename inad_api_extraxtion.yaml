@@ -333,8 +333,7 @@ components:
     
     Element_Digital_Address:
       required:
-        - digitalAddress
-        - usageInfo
+        - digitalAddress 
       type: object
       properties:
         digitalAddress:
@@ -500,7 +499,7 @@ components:
           example: true
         dateTimeCheck:
           type: string
-          description: Data/Ora estrazione in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
+          description: Data/Ora della verifica in formato ISO 8601 <yyyy-MM-dd'T'HH:mm:ssZ>
           format: date-time
           example: '2017-07-21T17:32:28Z'
       description: Modello di risposta per Verifica Domicilio Digitale
