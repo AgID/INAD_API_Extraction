@@ -42,5 +42,11 @@ altri enti di diritto privato non tenuti all’iscrizione in albi, elenchi o reg
 Per maggiori informazioni circa l'adesione ed utilizzo della **Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità** si rimanda al sito della stessa disponibile all'URL [PDND interoperabilità](https://www.interop.pagopa.it/).
 
+## Verifica integrazione API estrazione dei domicili digitali
+
+Le Pubbliche Amministrazioni interessate all'utilizzo delle API estrazione dei domicili digitali possono, attraverso 
+l'e-service INAD API PUBBLICHE CONSULTAZIONE erogato da AgID nella **Piattaforma Digitale Nazionale 
+Dati per l’interoperabilità** collaudo, verificare l'integrazione dei loro sistemi informatici con le stesse. A tal fine, si riporta nel file [datasetCampione.csv](datasetCampione.csv) un set di CF utili a verificare le risposte positive delle API estrazione dei domicili digitali
+
 
 
