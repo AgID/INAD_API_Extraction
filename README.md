@@ -34,5 +34,8 @@ Nazionale Dati per l’interoperabilità ai sensi delle:
   adottate dal AgID ai sensi dell’articolo 50-ter, comma 2 del Decreto 
   legislativo 7 marzo 2005, n. 82.
 
+Per maggiori informazioni circa l'adesione ed utilizzo della Piattaforma Digitale Nazionale 
+Dati per l’interoperabilità si rimanda al sito della stessa disponibile all'URL [PDND interoperabilità](https://www.interop.pagopa.it/)
+
 
 
