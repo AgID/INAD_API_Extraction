@@ -35,7 +35,7 @@ Nazionale Dati per l’interoperabilità ai sensi delle:
   legislativo 7 marzo 2005, n. 82.
 
 Per maggiori informazioni circa l'adesione ed utilizzo della Piattaforma Digitale Nazionale 
-Dati per l’interoperabilità si rimanda al sito della stessa disponibile all'URL [PDND interoperabilità](https://www.interop.pagopa.it/)
+Dati per l’interoperabilità si rimanda al sito della stessa disponibile all'URL [PDND interoperabilità](https://www.interop.pagopa.it/).
 
 
 
