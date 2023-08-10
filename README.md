@@ -9,10 +9,11 @@ o registri professionali o nel registro delle imprese** (in breve INAD),
 adottate da AgID ai sensi dell'articolo 71 del Decreto Legislativo 7 
 marzo 2005, n. 82 e smi con Determinazione n. 598 del 8 novembre 2021. 
 
-L\'OpenAPI riportato in [inad_api_extraxtion.yaml](https://github.com/AgID/INAD_API_Extraction/blob/main/inad_api_extraxtion.yaml), definisce le modalità 
-tecniche con cui i soggetti di cui all’articolo 2, comma 2, lettere a) 
-e b) del Decreto legislativo 7 marzo 2005, n. 82 accedono ai domicili 
-digitali eletti nell’INAD, consultabile tramite [Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/AgID/INAD_API_Extraction/main/inad_api_extraxtion.yaml).
+L\'OpenAPI riportato in [inad_api_extraxtion.yaml](https://github.com/AgID/INAD_API_Extraction/blob/main/inad_api_extraxtion.yaml) 
+(consultabile tramite [Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/AgID/INAD_API_Extraction/main/inad_api_extraxtion.yaml)), 
+definisce le modalità tecniche con cui i soggetti di cui all’articolo 2, comma 2, 
+lettere a) e b) del Decreto legislativo 7 marzo 2005, n. 82 accedono ai domicili 
+digitali eletti nell’INAD.
 
 Le specifiche tecniche sono definite in coerenza con il quadro normativo 
 in materia di interoperabilità dei sistemi informatici delle pubbliche 
