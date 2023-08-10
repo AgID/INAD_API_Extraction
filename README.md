@@ -47,9 +47,10 @@ Dati per l’interoperabilità** è denominato [**INAD CONSULTAZIONE DD**](https
 
 ## Verifica integrazione API estrazione dei domicili digitali
 
-Le Pubbliche Amministrazioni interessate all'utilizzo delle API estrazione dei domicili digitali possono, attraverso 
-l'e-service INAD API PUBBLICHE CONSULTAZIONE erogato da AgID nella **Piattaforma Digitale Nazionale 
-Dati per l’interoperabilità** collaudo, verificare l'integrazione dei loro sistemi informatici con le stesse. A tal fine, si riporta nel file [datasetSample.csv](datasetSample.csv) un set di CF utili a verificare le risposte positive delle API estrazione dei domicili digitali
+Le Pubbliche Amministrazioni interessate all'utilizzo dell'e-service **INAD CONSULTAZIONE DD** possono, per il tramite della **Piattaforma Digitale Nazionale 
+Dati per l’interoperabilità** collaudo, verificare l'integrazione dei loro sistemi informatici con le stesse. 
+
+A tal fine, si riporta nel file [datasetSample.csv](datasetSample.csv) un set di CF utili a verificare le risposte positive delle API estrazione dei domicili digitali
 
 
 
