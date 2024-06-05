@@ -17,7 +17,7 @@ info:
   version: 1.0.0-SNAPSHOT
 servers:
   - url: https://api.inad.gov.it/rest/inad/v1/domiciliodigitale
-    description: Generated server url
+    description: Generated server url, the URL indicated is for example purposes, the URL to be used must be retrieved from PDND
 tags:
   - name: API ESTRAZIONI MULTIPLE
   - name: API ESTRAZIONI PUNTUALI
