@@ -51,6 +51,9 @@ Dati per l’interoperabilità** è denominato [**INAD CONSULTAZIONE DD**](https
 Le Pubbliche Amministrazioni interessate all'utilizzo dell'e-service **INAD CONSULTAZIONE DD** possono, per il tramite della **Piattaforma Digitale Nazionale 
 Dati per l’interoperabilità** collaudo, verificare l'integrazione dei loro sistemi informatici con le stesse. 
 
+Si precisa che l'URL del serve per effettuare la chiamata deve essere recuperato dall'OpenAPI associato all'e-serivce pubblicato sulla **Piattaforma Digitale Nazionale 
+Dati per l’interoperabilità**.
+
 A tal fine, si riporta nel file [datasetSample.csv](datasetSample.csv) un set di CF utili a verificare le risposte positive delle API estrazione dei domicili digitali
 
 
